@@ -256,10 +256,10 @@ quartohelp_retrieve_tool <- function(store) {
       store,
       text,
       top_k = 10,
-      filter = !.data$chunk_id %in% retrieved_ids
+      filter = !.data$id %in% retrieved_ids
     )
 
-    retrieved_ids <<- unique(unlist(c(retrieved_ids, chunks$chunk_id)))
+    retrieved_ids <<- unique(unlist(c(retrieved_ids, chunks$id)))
     chunks
   }
 
