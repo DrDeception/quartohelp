@@ -3,7 +3,7 @@ quarto_ragnar_store <- function() {
   if (!file.exists(path)) {
     update_store()
   }
-  ragnar::ragnar_store_connect(
+  ragnar::store_connect(
     path,
     read_only = TRUE
   )
