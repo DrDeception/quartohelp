@@ -19,7 +19,7 @@
 #'
 #' @return Invisibly returns the `client` object for further use or inspection.
 #'
-#' @seealso [ellmer::chat_openai], [ragnar::ragnar_retrieve]
+#' @seealso [ellmer::chat_openai], [ragnar::retrieve]
 #' @importFrom rlang .data
 #' @export
 #' @examples
@@ -250,15 +250,17 @@ quartohelp_setup_client <- function(client, store) {
 quartohelp_retrieve_tool <- function(store) {
   retrieved_ids <- integer()
   rag_retrieve_quarto_excerpts <- function(text) {
-    # Retrieve relevant chunks using hybrid (vector/BM25) search,
-    # excluding previously returned IDs in this session.
-    chunks <- ragnar::ragnar_retrieve(
+    # Retrieve relevant chunks using hybrid (vector/BM25) search via
+    # `ragnar::retrieve()`, excluding previously returned IDs in this
+    # session.
+    chunks <- ragnar::retrieve(
       store,
       text,
       top_k = 10,
       filter = !.data$id %in% retrieved_ids
     )
 
+    # Track retrieved IDs to avoid returning duplicates on subsequent calls
     retrieved_ids <<- unique(unlist(c(retrieved_ids, chunks$id)))
     chunks
   }

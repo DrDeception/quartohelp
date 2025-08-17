@@ -41,5 +41,5 @@ if (interactive() && nzchar(Sys.getenv("OPENAI_API_KEY"))) {
 }
 }
 \seealso{
-\link[ellmer:chat_openai]{ellmer::chat_openai}, \link[ragnar:ragnar_retrieve]{ragnar::ragnar_retrieve}
+\link[ellmer:chat_openai]{ellmer::chat_openai}, \link[ragnar:retrieve]{ragnar::retrieve}
 }
