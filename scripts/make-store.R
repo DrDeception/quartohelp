@@ -42,7 +42,7 @@ stopifnot(file.exists(sitemap$path))
 
 store_location <- "quarto.ragnar.store"
 
-store <- ragnar_store_create(
+store <- store_create(
   store_location,
   name = "quarto_docs",
   embed = \(x) ragnar::embed_openai(x, model = "text-embedding-3-small"),
@@ -58,10 +58,10 @@ for (r in seq_len(nrow(sitemap))) {
   doc@origin <- url
   chunks <- markdown_chunk(doc)
 
-  ragnar_store_insert(store, chunks)
+  store_insert(store, chunks)
 }
 
-ragnar_store_build_index(store)
+store_build_index(store)
 
 DBI::dbDisconnect(store@con)
 
