@@ -17,15 +17,14 @@ Imports:
     dplyr,
     ellmer (>= 0.2.1.9000),
     promises,
-    ragnar (>= 0.2.0),
+    ragnar (>= 0.3.0),
     rlang,
     shiny,
     shinychat (>= 0.2.0.9000),
     stringi
 Remotes:
     posit-dev/shinychat/pkg-r,
-    tidyverse/ellmer,
-    tidyverse/ragnar
+    tidyverse/ellmer
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
